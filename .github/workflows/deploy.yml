@@ -38,6 +38,7 @@ jobs:
           terraform plan -no-color
           terraform plan -no-color > plan.txt
           terraform plan -out=tf_plan.txt
+          ls
         continue-on-error: false
         
       - name: Upload Terraform plan artifacts

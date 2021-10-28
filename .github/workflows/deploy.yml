@@ -8,7 +8,7 @@ on:
 jobs:
   cloudflare:
     runs-on: ubuntu-latest
-    name: Deploy Cloudflare Terraform scripts
+    name: Cloudflare
     defaults:
       run:
         working-directory: cloudflare
@@ -45,13 +45,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Terraform plan
-          path: ./plan.txt
+          path: cloudflare/plan.txt
           
       - name: Upload Terraform-generated plan
         uses: actions/upload-artifact@v2
         with:
           name: Terraform-generated plan
-          path: ./tf_plan.txt
+          path: cloudflare/tf_plan.txt
           
       - name: Apply Terraform changes
         id: apply

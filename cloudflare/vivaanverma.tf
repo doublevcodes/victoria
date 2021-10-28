@@ -8,8 +8,7 @@ terraform {
 }
 
 provider "cloudflare" {
-    # email read from $CLOUDFLARE_EMAIL
-    # api token read from $CLOUDFLARE_API_TOKEN
+    # Email and API Token read from environment variables
 }
 
 variable "zone_id" {
@@ -26,6 +25,7 @@ resource "cloudflare_record" "www" {
     value   = var.domain
     type    = "CNAME"
     proxied = true
+    allow_overwrite = true
 }
 
 resource "cloudflare_zone_settings_override" "vivaanverma-com-settings" {

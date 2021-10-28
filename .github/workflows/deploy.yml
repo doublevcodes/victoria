@@ -6,8 +6,31 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint Terraform
+    strategy:
+      matrix:
+        directory: [cloudflare]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Enter provider directory
+        runs: cd ${{ matrix.directory }}
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+
+      - name: Initialise TFLint
+        runs: tflint --init
+
+      - name: Run TFLint
+        runs: tflint -f compact
+
   cloudflare:
     runs-on: ubuntu-latest
+    needs: lint
     name: Cloudflare
     defaults:
       run:

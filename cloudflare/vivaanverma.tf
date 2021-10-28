@@ -35,7 +35,6 @@ resource "cloudflare_zone_settings_override" "vivaanverma-com-settings" {
         always_use_https = "on"
         brotli = "on"
         hotlink_protection = "on"
-        http2 = "on"
         http3 = "on"
         rocket_loader = "on"
         image_resizing = "on"

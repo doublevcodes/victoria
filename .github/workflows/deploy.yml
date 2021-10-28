@@ -47,7 +47,7 @@ jobs:
           path: plan.txt
           
       - name: Upload Terraform-generated plan
-        uses: actions/upload-artifacts@v2
+        uses: actions/upload-artifact@v2
         with:
           name: Terraform-generated plan
           path: tf_plan.txt

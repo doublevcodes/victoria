@@ -1,0 +1,57 @@
+name: Deploy Terraform configuration files
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  cloudflare:
+    runs-on: ubuntu-latest
+    name: Deploy Cloudflare Terraform scripts
+    defaults:
+      run:
+        working-directory: cloudflare
+    env:
+      CLOUDFLARE_EMAIL: ${{ secrets.CF_EMAIL }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        
+      - name: Initialise Terraform
+        id: init
+        run: terraform init
+        
+      - name: Validate Terraform files
+        id: validate
+        run: terraform validate -no-color
+        continue-on-error: false
+        
+      - name: Plan Terraform changes
+        id: plan
+        run: |
+          terraform plan -no-color
+          terraform plan -no-color > plan.txt
+          terraform plan -out=tf_plan.txt
+        continue-on-error: false
+        
+      - name: Upload Terraform plan artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Terraform plan
+          path: plan.txt
+          
+      - name: Upload Terraform-generated plan
+        uses: actions/upload-artifact@v2
+        with:
+          name: Terraform-generated plan
+          path: tf_plan.txt
+          
+      - name: Apply Terraform changes
+        id: apply
+        run: terraform apply -auto-approve

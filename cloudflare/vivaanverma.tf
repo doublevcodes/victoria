@@ -37,14 +37,8 @@ resource "cloudflare_zone_settings_override" "vivaanverma-com-settings" {
         hotlink_protection = "on"
         http3 = "on"
         rocket_loader = "on"
-        image_resizing = "on"
         min_tls_version = "1.3"
         ssl = "strict"
         tls_1_3 = "on"
-        minify {
-            css = "on"
-            html = "on"
-            js = "on"
-        }
     }
 }

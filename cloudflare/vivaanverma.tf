@@ -80,7 +80,7 @@ resource "cloudflare_record" "spf-record" {
 resource "cloudflare_record" "dmarc-record" {
     zone_id         = var.zone_id
     name            = "_dmarc"
-    value           = "v=DMARC; p=reject; rua-mailto:vivaan.verma@gmail.com"
+    value           = "v=DMARC1; p=reject; rua-mailto:vivaan.verma@gmail.com"
     type            = "TXT"
     proxied         = false
     allow_overwrite = true

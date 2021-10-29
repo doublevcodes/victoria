@@ -93,7 +93,7 @@ resource "cloudflare_record" "dmarc-record" {
 resource "cloudflare_record" "easter-egg-txt" {
   zone_id         = var.zone_id
   name            = "@"
-  value           = "Hello from the Octoverse!"
+  value           = "Hello from me!"
   type            = "TXT"
   proxied         = false
   allow_overwrite = true

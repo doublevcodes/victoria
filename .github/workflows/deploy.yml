@@ -5,13 +5,18 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+  ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+  ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     name: Lint Terraform
     strategy:
       matrix:
-        directory: [cloudflare]
+        directory: [cloudflare, backblaze]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

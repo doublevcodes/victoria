@@ -16,7 +16,7 @@ jobs:
     name: Lint Terraform
     strategy:
       matrix:
-        directory: [cloudflare, backblaze]
+        directory: [cloudflare]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

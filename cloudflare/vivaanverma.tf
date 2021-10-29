@@ -89,3 +89,12 @@ resource "cloudflare_record" "dmarc-record" {
   proxied         = false
   allow_overwrite = true
 }
+
+resource "cloudflare_record" "easter-egg-txt" {
+  zone_id         = var.zone_id
+  name            = "@"
+  value           = "Hello from the Octoverse!"
+  type            = "TXT"
+  proxied         = false
+  allow_overwrite = true
+}

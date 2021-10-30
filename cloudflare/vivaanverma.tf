@@ -39,7 +39,7 @@ resource "cloudflare_record" "site-record" {
   name            = "@"
   value           = "76.76.21.21"
   type            = "A"
-  proxied         = false  # Otherwise Vercel breaks
+  proxied         = false # Otherwise Vercel breaks
   allow_overwrite = true
 }
 

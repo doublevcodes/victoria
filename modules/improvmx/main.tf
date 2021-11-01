@@ -8,11 +8,11 @@ terraform {
 }
 
 variable "zone_id" {
-    type = string
+  type = string
 }
 
 variable "domain" {
-    type = string
+  type = string
 }
 
 resource "cloudflare_record" "mail-redirect-1" {

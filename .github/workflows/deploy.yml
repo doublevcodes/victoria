@@ -44,7 +44,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Check Terraform formatting
-        run: terraform fmt -check -recursive
+        run: terraform fmt -check -recursive -diff
         
   artifactory-check:
     runs-on: ubuntu-latest

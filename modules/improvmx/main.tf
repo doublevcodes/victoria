@@ -11,10 +11,6 @@ variable "zone_id" {
     type = string
 }
 
-variable "domain" {
-    type = string
-}
-
 resource "cloudflare_record" "mail-redirect-1" {
   zone_id         = var.zone_id
   name            = "@"

@@ -19,7 +19,7 @@ variable "zone_id" {
 resource "cloudflare_record" "www-redirect" {
   zone_id         = var.zone_id
   name            = "www"
-  value           = var.domain
+  value           = "@"
   type            = "CNAME"
   proxied         = true
   allow_overwrite = true

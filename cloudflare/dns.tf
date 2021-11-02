@@ -25,6 +25,6 @@ module "improvmx_mail" {
 }
 
 module "dns_records" {
-  source = "../modules/dns"
+  source  = "../modules/dns"
   zone_id = var.zone_id
 }

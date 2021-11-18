@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-provider "cloudflare" {
-
-}
-
 variable "zone_id" {
   type = string
 }

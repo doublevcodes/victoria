@@ -1,6 +1,6 @@
 terraform {
   required_providers {
-    cloudflare {
+    cloudflare = {
       source  = "cloudflare/cloudflare"
       version = "~> 3.3"
     }
@@ -15,7 +15,7 @@ variable "domain" {
   type = string
 }
 
-resource "cloudflare_page_rule" "git-subdomain" {
+resource "cloudflare_page_rule" "git_subdomain" {
   zone_id = var.zone_id
   target  = "git.${var.domain}/*"
   actions {

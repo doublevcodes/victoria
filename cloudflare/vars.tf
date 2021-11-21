@@ -10,6 +10,6 @@ variable "doublevcodes_zone_id" {
   default = "6518fc46e87bdf524f6362ba4baf5136"
 }
 
-variable "doublvcodes_domain" {
+variable "doublevcodes_domain" {
   default = "doublev.codes"
 }

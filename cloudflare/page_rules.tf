@@ -18,17 +18,14 @@ terraform {
 provider "cloudflare" {
 }
 
-module "improvmx_mail" {
-  source  = "../modules/improvmx"
+module "vivaanverma_page_rules" {
+  source  = "../modules/page_rules"
   zone_id = var.vivaanverma_zone_id
+  domain  = var.vivaanverma_domain
 }
 
-module "vivaanverma_dns_records" {
-  source  = "../modules/dns"
-  zone_id = var.vivaanverma_zone_id
-}
-
-module "doublevcodes_dns_records" {
-  source  = "../modules/dns"
+module "doublevcodes_page_rules" {
+  source  = "../modules/page_rules"
   zone_id = var.doublevcodes_zone_id
+  domain  = var.doublevcodes_domain
 }
